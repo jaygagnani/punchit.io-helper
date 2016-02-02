@@ -4,9 +4,11 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ImageDetailActivity extends FragmentActivity {
 
@@ -40,6 +42,10 @@ public class ImageDetailActivity extends FragmentActivity {
         rb5 = (RadioButton) findViewById(R.id.rb5);
         rb6 = (RadioButton) findViewById(R.id.rb6);
 
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
+        skip = (TextView) findViewById(R.id.skip_tv);
+
         rb1.setClickable(false);
         rb2.setClickable(false);
         rb3.setClickable(false);
@@ -47,11 +53,60 @@ public class ImageDetailActivity extends FragmentActivity {
         rb5.setClickable(false);
         rb6.setClickable(false);
 
+        ImageDetailActivity.rb1.setChecked(true);
+
         imagePagerAdapter = new ImagePagerAdapter(getSupportFragmentManager(), imageResIds.length, getApplicationContext());
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+
         viewPager.setPageTransformer(true, new ZoomOutPageTransformer());
         viewPager.setAdapter(imagePagerAdapter);
-        //viewPager.getCurrentItem();
+
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+                switch (position) {
+                    case 0:
+                        ImageDetailActivity.rb1.setChecked(true);
+                        break;
+                    case 1:
+                        ImageDetailActivity.rb2.setChecked(true);
+                        break;
+                    case 2:
+                        ImageDetailActivity.rb3.setChecked(true);
+                        break;
+                    case 3:
+                        ImageDetailActivity.rb4.setChecked(true);
+                        break;
+                    case 4:
+                        ImageDetailActivity.rb5.setChecked(true);
+                        break;
+                    case 5:
+                        ImageDetailActivity.rb6.setChecked(true);
+                        break;
+                    default:
+                        ImageDetailActivity.rb1.setChecked(true);
+                        break;
+                }
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Skip Clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 

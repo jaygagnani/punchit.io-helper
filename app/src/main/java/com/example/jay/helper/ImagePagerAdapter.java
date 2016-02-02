@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.widget.Toast;
 
 /**
  * Created by jay on 29/01/2016.
@@ -22,26 +21,34 @@ public class ImagePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Toast.makeText(ctx, "Current Item : " + ImageDetailActivity.viewPager.getCurrentItem(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(ctx, "Current Item : " + ImageDetailActivity.viewPager.getCurrentItem(), Toast.LENGTH_SHORT).show();
 
-        int current_item = ImageDetailActivity.viewPager.getCurrentItem();
+        //int current_item = ImageDetailActivity.viewPager.getCurrentItem();
 
-        switch (current_item){
-            case 0: ImageDetailActivity.rb1.setChecked(true);
-                break;
-            case 1: ImageDetailActivity.rb2.setChecked(true);
-                break;
-            case 2: ImageDetailActivity.rb3.setChecked(true);
-                break;
-            case 3: ImageDetailActivity.rb4.setChecked(true);
-                break;
-            case 4: ImageDetailActivity.rb5.setChecked(true);
-                break;
-            case 5: ImageDetailActivity.rb6.setChecked(true);
-                break;
-            default: ImageDetailActivity.rb1.setChecked(true);
-                break;
-        }
+
+//        if(current_item < 1){
+//            ImageDetailActivity.rb1.setChecked(true);
+//        }
+//        if(current_item > 4){
+//            ImageDetailActivity.rb6.setChecked(true);
+//        }
+//
+//        switch (current_item){
+//            case 0: ImageDetailActivity.rb1.setChecked(true);
+//                break;
+//            case 1: ImageDetailActivity.rb2.setChecked(true);
+//                break;
+//            case 2: ImageDetailActivity.rb3.setChecked(true);
+//                break;
+//            case 3: ImageDetailActivity.rb4.setChecked(true);
+//                break;
+//            case 4: ImageDetailActivity.rb5.setChecked(true);
+//                break;
+//            case 5: ImageDetailActivity.rb6.setChecked(true);
+//                break;
+//            default: ImageDetailActivity.rb1.setChecked(true);
+//                break;
+//        }
 
         return ImageDetailFragment.newInstance(position);
     }
